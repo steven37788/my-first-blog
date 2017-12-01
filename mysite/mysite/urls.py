@@ -19,3 +19,10 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]
+
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+urlpatterns += patterns('', (
+    r'^static/(?P<path>.*)$',
+    'django.views.static.serve',
+    {'document_root': settings.STATIC_ROOT}
+  ))
